@@ -1,39 +1,24 @@
-#include "mainwindow.h"
-
-#include <QApplication>
-#include <QtWidgets>
 #include <QDebug>
+#include <QtWidgets>
 
-int main(int argc, char *argv[])
+int main (int argc, char **argv)
 {
     QApplication app(argc, argv);
-    QWidget wgt;
+    QSpinBox spb;
 
-    QPushButton* pcmdA = new QPushButton("A");
-    QPushButton* pcmdB = new QPushButton("B");
+    QPalette pal = spb.palette();
 
+    pal.setBrush(QPalette::Button, QBrush(Qt::red, Qt::Dense3Pattern));
+    pal.setColor(QPalette::ButtonText, Qt::blue);
+    pal.setColor(QPalette::Active, QPalette::Base, Qt::green);
 
-    // Layout setup
+    spb.setPalette(pal);
+    spb.resize(150, 74);
+    spb.show();
 
-    QBoxLayout* pbxLayout = new QBoxLayout(QBoxLayout::LeftToRight);
-
-    pbxLayout->addWidget(pcmdA);
-    pbxLayout->addStretch(10);
-    pbxLayout->addWidget(pcmdB);
-    wgt.setLayout(pbxLayout);
-
-    wgt.resize(350, 40);
-
-    wgt.show();
-
-
-
-
+    app.setStyle("Windows");
 
     return app.exec();
-
-
-
 
 
 }
